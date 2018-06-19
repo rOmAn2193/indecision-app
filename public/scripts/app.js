@@ -3,9 +3,12 @@
 console.log('App.js is running!');
 
 // JSX - JavaScript XML
+// logical and operator 
+
 var app = {
     title: 'Javascript expressions',
-    subtitle: 'This is my subtitle'
+    subtitle: 'This is my subtitle',
+    options: ['One', 'Two']
 };
 
 var template = React.createElement(
@@ -16,10 +19,15 @@ var template = React.createElement(
         null,
         app.title
     ),
-    React.createElement(
+    app.subtitle && React.createElement(
         'p',
         null,
         app.subtitle
+    ),
+    React.createElement(
+        'p',
+        null,
+        app.options.length > 0 ? 'Here are your options' : 'No options'
     ),
     React.createElement(
         'ol',
@@ -38,13 +46,24 @@ var template = React.createElement(
 );
 
 var user = {
-    name: 'Thomas',
-    age: 30,
-    location: 'Chicago'
+    name: 'Brian',
+    age: 28,
+    location: 'Hawaii'
 };
 var userName = 'Alex';
 var userAge = 27;
 var userLocation = 'Los Angeles';
+
+function getLocation(location) {
+    if (location) {
+        return React.createElement(
+            'p',
+            null,
+            'Location: ',
+            location
+        );
+    }
+}
 
 var templateTwo = React.createElement(
     'div',
@@ -52,21 +71,16 @@ var templateTwo = React.createElement(
     React.createElement(
         'h1',
         null,
-        user.name
+        user.name ? user.name : 'Anonymous'
     ),
-    React.createElement(
+    user.age && user.age >= 18 && React.createElement(
         'p',
         null,
         'Age: ',
         user.age
     ),
-    React.createElement(
-        'p',
-        null,
-        'Location: ',
-        user.location
-    )
+    getLocation(user.location)
 );
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);
