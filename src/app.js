@@ -42,7 +42,7 @@ var templateTwo = (
       {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
       {getLocation(user.location)}
     </div>
-);
+); 
 var appRoot = document.getElementById('app');
 
 ReactDOM.render(templateTwo, appRoot);
