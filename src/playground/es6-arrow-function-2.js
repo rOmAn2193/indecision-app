@@ -1,17 +1,15 @@
-'use strict';
-
-var _arguments = arguments;
 // arguments object - no longer bound with arrow functions
-var add = function add(a, b) {
-    console.log(_arguments);
+const add = (a, b) => {
+    console.log(arguments);
     return a + b;
 };
 console.log(add(55, 1));
 
-var user = {
+
+const user = {
     name: 'Justin',
     cities: ['Philadelphia', 'New York', 'Dublin'],
-    printPlacedLived: function printPlacedLived() {
+    printPlacedLived: function () {
         console.log(this.name);
         console.log(this.cities);
 
@@ -24,15 +22,11 @@ var user = {
 user.printPlacedLived();
 // this keyword - no longer bound
 
-var multiplier = {
+const multiplier = {
     numbers: [10, 20, 30],
     multiplyBy: 3,
-    multiply: function multiply() {
-        var _this = this;
-
-        return this.numbers.map(function (number) {
-            return number * _this.multiplyBy;
-        });
+    multiply() {
+        return this.numbers.map((number) => number * this.multiplyBy);
     }
 };
 
